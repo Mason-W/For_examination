@@ -12,7 +12,7 @@ def simple_feistel_self_inverse_8_help(value):
     return (r1 << 14)+l1
 
 
-def simple_feistel_self_inverse_8(value):
+def simple_feistel_self_inverse_8_random(value):
     r = random.randint(1, 1000)
     cur = value
     while 1:
@@ -20,4 +20,4 @@ def simple_feistel_self_inverse_8(value):
         if cur <= 89999999:
             break
 
-    return (cur+r) % 90000000 + 10000000
+    return (cur+r) % 90000000 + 10000000            #加入一个 random 值，实现了即使知道算法也无法预测用户名序列。
