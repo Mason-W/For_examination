@@ -1,0 +1,22 @@
+import random
+
+
+def simple_feistel_self_inverse_8_help(value):
+    l1 = (value >> 14) & 16383   # 需要生成八位数,最接近2^28,所以二进制数为28位, 16383为2^14-1
+    r1 = value & 16383
+    for i in range(3):
+        l2 = r1
+        r2 = l1 ^ round((((1366 * r1 + 150889) % 714025) / 714025.0) * 16383)
+        l1 = l2
+        r1 = r2
+    return (r1 << 14)+l1
+
+
+def simple_feistel_self_inverse_8_random(value):
+    cur = value
+    while 1:
+        cur = simple_feistel_self_inverse_8_help(cur)
+        if cur <= 89999999:
+            break
+
+    return cur+10000000
