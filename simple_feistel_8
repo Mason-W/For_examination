@@ -12,11 +12,11 @@ def simple_feistel_self_inverse_8_help(value):
     return (r1 << 14)+l1
 
 
-def simple_feistel_self_inverse_8_random(value):
+def simple_feistel_self_inverse_8(value):
     cur = value
     while 1:
         cur = simple_feistel_self_inverse_8_help(cur)
         if cur <= 89999999:
             break
 
-    return cur+10000000
+    return cur+10000000             #保证输出是八位的正整数
