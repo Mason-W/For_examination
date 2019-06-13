@@ -10,8 +10,8 @@ def simple_feistel_self_inverse(value):
 
 
 s = set()
-for i in range(2**32-1):                 #正整数最多有 2**32-1 个
+for i in range(2147483647):                 #正整数最多有 2**31-1=2147483647 个
     cur = simple_feistel_self_inverse(i)
     s.add(cur)
 size = len(s)
-print(size)
+print(size)                                 #size 即为不重复用户名的个数
